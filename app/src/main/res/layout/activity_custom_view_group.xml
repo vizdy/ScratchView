@@ -10,7 +10,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".activity.CustomViewGroupActivity">
 
-    <com.clock.view.basic.CustomViewGroup
+    <com.sovilo.view.basic.CustomViewGroup
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:background="@android:color/darker_gray" />

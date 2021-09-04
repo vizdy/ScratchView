@@ -7,9 +7,9 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.clock.view.activity.SimpleTextViewActivity">
+    tools:context="com.sovilo.view.activity.SimpleTextViewActivity">
 
-    <com.clock.view.basic.SimpleTextView
+    <com.sovilo.view.basic.SimpleTextView
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="#da9637"

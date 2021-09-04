@@ -7,7 +7,7 @@
     tools:context=".activity.CustomViewActivity">
 
 
-    <com.clock.view.basic.CustomView
+    <com.sovilo.view.basic.CustomView
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:layout_centerInParent="true"

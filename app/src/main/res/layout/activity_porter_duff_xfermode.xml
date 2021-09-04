@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.clock.view.activity.PorterDuffXfermodeActivity">
+    tools:context="com.sovilo.view.activity.PorterDuffXfermodeActivity">
 
-    <com.clock.view.basic.SimpleXfermodeView
+    <com.sovilo.view.basic.SimpleXfermodeView
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

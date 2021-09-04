@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".activity.CanvasActivity">
 
-    <com.clock.view.basic.SimpleCanvasView
+    <com.sovilo.view.basic.SimpleCanvasView
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </RelativeLayout>
