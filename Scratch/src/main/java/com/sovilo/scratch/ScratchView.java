@@ -369,9 +369,8 @@ public class ScratchView extends View {
     }
 
     /**
-     * 设置擦除监听器
      *
-     * @param listener
+     * @param listener Erase status listener
      */
     public void setEraseStatusListener(EraseStatusListener listener) {
         this.mEraseStatusListener = listener;
@@ -435,9 +434,8 @@ public class ScratchView extends View {
         public void onProgress(int percent);
 
         /**
-         * 擦除完成回调函数
          *
-         * @param view
+         * @param view Pass the view
          */
         public void onCompleted(View view);
     }

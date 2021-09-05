@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.sovilo.view.R;
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Just Simple TextView Demo

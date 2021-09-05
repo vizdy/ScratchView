@@ -1,4 +1,5 @@
 package com.sovilo.view.basic;
+import androidx.appcompat.widget.AppCompatTextView;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -6,12 +7,12 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.widget.TextView;
+//import android.widget.TextView;
 
 /**
  * Created by Clock on 2016/8/2.
  */
-public class SimpleTextView extends TextView {
+public class SimpleTextView extends AppCompatTextView {
 
     private Paint mPaint1, mPaint2;
 
@@ -32,7 +33,8 @@ public class SimpleTextView extends TextView {
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public SimpleTextView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
+        //super(context, attrs, defStyleAttr, defStyleRes);
+        super(context, attrs, defStyleAttr);
         initAttr();
     }
 

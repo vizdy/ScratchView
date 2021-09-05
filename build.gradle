@@ -17,6 +17,20 @@ allprojects {
     }
 }
 
+/*
+subprojects {
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            // options.encoding = 'UTF-8'
+            options.compilerArgs += [
+                    '-Xlint:unchecked', // Show info about unchecked or unsafe operations.
+                    '-Xlint:deprecation', // Show info about deprecated members.
+            ]
+        }
+    }
+}
+*/
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }

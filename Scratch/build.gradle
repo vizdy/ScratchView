@@ -1,11 +1,12 @@
-apply plugin: 'com.android.library'
-// This is the library version used when deploying the artifact
-version = "2.0.0"
-group = "com.clock.scratch" // Maven Group ID for the artifact，一般填你唯一的包名
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
+    id 'signing'
+}
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    buildToolsVersion "30.0.3"
     resourcePrefix "ScratchView_" //暂不清楚作用，随便填
 
     defaultConfig {
@@ -16,8 +17,8 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
     lintOptions {
@@ -31,56 +32,73 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.3.1'
 }
 
-def siteUrl = 'https://github.com/vizdy/ScratchView'  // 项目的主页
-def gitUrl = 'https://github.com/vizdy/ScratchView.git'   // Git仓库的url
+def siteUrl = 'https://github.com/vizdy/ScratchView'
+def gitUrl = 'https://github.com/vizdy/ScratchView.git'
 
-/*
-install {
-    repositories.mavenInstaller {
-        // This generates POM.xml with proper parameters
-        pom {
-            project {
-                packaging 'aar'
-                name 'This is a android custom view , like a scratch card effect! '
-                // Add your description here 添加一些项目描述
-                url siteUrl
-                licenses {
-                    license {
-                        name 'The Apache Software License, Version 2.0'
-                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+// Because the components are created only during the afterEvaluate phase,
+// configure publications using the afterEvaluate() lifecycle method.
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                // Applies the component for the release build variant.
+                from components.release
+                groupId = 'com.sovilo.scratch'
+                artifactId = 'ScratchView'
+                version = '2.0.0'
+                pom {
+                    name = 'Scratch Card Effect Library'
+                    description = 'This is a android custom view , like a scratch card effect!'
+                    url = siteUrl
+                    packaging = 'far'
+                    //properties = []
+                    licenses {
+                        license {
+                            name = 'The Apache License, Version 2.0'
+                            url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        }
+                    }
+                    developers {
+                        developer {
+                            id = 'vizdyy'
+                            name = 'Vishvambhar Dayal'
+                            email = 'vizdyy@gmail.com'
+                        }
+                    }
+                    scm {
+                        connection = gitUrl
+                        developerConnection = gitUrl
+                        url = siteUrl
                     }
                 }
-                developers {
-                    developer {
-                        id 'clock'
-                        name 'D_clock爱吃葱花'
-                        email '1084991652clock@gmail.com'
-                    }
-                }
-                scm {
-                    connection gitUrl
-                    developerConnection gitUrl
-                    url siteUrl
-                }
+            }
+            // Creates a Maven publication called “debug”.
+            debug(MavenPublication) {
+                // Applies the component for the debug build variant.
+                from components.debug
+
+                groupId = 'com.sovilo.scratch'
+                artifactId = 'ScratchView'
+                version = '2.0.0'
             }
         }
     }
 }
-*/
 
 task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
-    classifier = 'sources'
+    archiveClassifier = 'sources'
 }
 
 task javadoc(type: Javadoc) {
     source = android.sourceSets.main.java.srcDirs
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-    options.encoding = "utf-8" //让注释使用 UTF-8 编码，不然中文通不过，会导致失败
+    options.encoding = "utf-8"
 }
 
 task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
+    archiveClassifier = 'javadoc'
     from javadoc.destinationDir
 }
 
@@ -91,18 +109,3 @@ artifacts {
 
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
-/*
-bintray {
-    user = properties.getProperty("bintray.user")
-    key = properties.getProperty("bintray.apikey")
-    configurations = ['archives']
-    pkg {
-        repo = "maven"
-        name = "ScratchView"    //发布到JCenter上的项目名字
-        websiteUrl = siteUrl
-        vcsUrl = gitUrl
-        licenses = ["Apache-2.0"]
-        publish = true
-    }
-}
-*/
