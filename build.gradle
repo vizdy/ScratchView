@@ -7,7 +7,13 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.0.2'
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.30")
+        classpath("org.jetbrains.dokka:dokka-gradle-plugin:1.5.0")
     }
+}
+
+plugins {
+    id 'io.github.gradle-nexus.publish-plugin' version '1.0.0'
 }
 
 allprojects {
@@ -34,3 +40,7 @@ subprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+// script for setting env for publishing to maven
+apply from: "${rootDir}/scripts/publish-root.gradle"
+
