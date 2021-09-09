@@ -1,5 +1,5 @@
-apply plugin: 'maven-publish'
 apply plugin: 'signing'
+apply plugin: 'maven-publish'
 apply plugin: 'org.jetbrains.dokka'
 
 task androidSourcesJar(type: Jar) {
@@ -52,13 +52,16 @@ afterEvaluate {
                 groupId PUBLISH_GROUP_ID
                 artifactId PUBLISH_ARTIFACT_ID
                 version PUBLISH_VERSION
+                //artifact("$buildDir/outputs/aar/Scratch-release.aar")
 
                 artifact androidSourcesJar
                 artifact javadocJar
+                System.out.println("...signing.keyId: " + rootProject.ext["signing.keyId"])
+                System.out.println("...signing.password: " + rootProject.ext["signing.password"])
 
                 pom {
-                    name = 'Scratch Card Effect Library'
-                    description = 'This is a android custom view , like a scratch card effect!'
+                    name = PUBLISH_ARTIFACT_ID
+                    description = 'This is a android custom view, like a scratch card effect!'
                     url = siteUrl
                     packaging = 'aar'
                     //properties = []
@@ -92,16 +95,18 @@ afterEvaluate {
                 version = '2.0.0'
             }
         }
+
+        signing {
+            useInMemoryPgpKeys(
+                    rootProject.ext["signing.keyId"],
+                    rootProject.ext["signing.key"],
+                    rootProject.ext["signing.password"]
+            )
+            //sign publishing.publications.release
+            //sign publishing.publications.release(MavenPublication)
+        }
     }
 }
 
 
-signing {
-    useInMemoryPgpKeys(
-            rootProject.ext["signing.keyId"],
-            rootProject.ext["signing.key"],
-            rootProject.ext["signing.password"],
-    )
-    sign publishing.publications
-}
 
