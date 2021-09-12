@@ -21,7 +21,7 @@ Gradle
 ```
 
 dependencies {
-    compile 'com.clock.scratch:Scratch:1.0.0'
+    compile 'com.clock.scratch:Scratch:2.0.0'
 }
 
 ```
@@ -33,7 +33,7 @@ Maven
 <dependency>
   <groupId>com.clock.scratch</groupId>
   <artifactId>Scratch</artifactId>
-  <version>1.0.0</version>
+  <version>2.0.0</version>
   <type>pom</type>
 </dependency>
 

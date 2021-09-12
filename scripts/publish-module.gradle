@@ -49,9 +49,9 @@ afterEvaluate {
                 } else {
                   from components.java
                 }
-                groupId PUBLISH_GROUP_ID
-                artifactId PUBLISH_ARTIFACT_ID
-                version PUBLISH_VERSION
+                groupId = PUBLISH_GROUP_ID
+                artifactId = PUBLISH_ARTIFACT_ID
+                version = PUBLISH_VERSION
                 //artifact("$buildDir/outputs/aar/Scratch-release.aar")
 
                 artifact androidSourcesJar
@@ -90,9 +90,9 @@ afterEvaluate {
                 // Applies the component for the debug build variant.
                 from components.debug
 
-                groupId = 'com.sovilo.scratch'
-                artifactId = 'ScratchView'
-                version = '2.0.0'
+                groupId = PUBLISH_GROUP_ID
+                artifactId = PUBLISH_ARTIFACT_ID
+                version = PUBLISH_VERSION
             }
         }
 

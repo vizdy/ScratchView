@@ -18,7 +18,7 @@ if (secretPropsFile.exists()) {
 
     println("signing.keyId: " + ext["signing.keyId"])
     println("signing.password: " + ext["signing.password"])
-    println("signing.key: " + ext["signing.key"])
+    //println("signing.key: " + ext["signing.key"])
 } else {
     // Use system environment variables
     ext["ossrhUsername"] = System.getenv('OSSRH_USERNAME')
